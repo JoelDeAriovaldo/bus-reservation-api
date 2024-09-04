@@ -1,8 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const reservationController = require('../controllers/reservationController');
-const authMiddleware = require('../middleware/authMiddleware');
 
-router.post('/create', authMiddleware, reservationController.createReservation);
+// Example callback function
+const reservationController = {
+    createReservation: (req, res) => {
+        // Your logic here
+        res.send('Reservation created');
+    }
+};
+
+// Correct usage of router.post
+router.post('/reservations', reservationController.createReservation);
 
 module.exports = router;

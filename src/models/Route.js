@@ -1,4 +1,4 @@
-const db = require('../config/dbConfig');
+const db = require('../config/database');
 
 class Route {
     static async getByLocations(departure, arrival) {

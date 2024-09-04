@@ -1,4 +1,4 @@
-const db = require('../config/dbConfig');
+const db = require('../config/database');
 
 class Seat {
     static async getAvailableSeats(tripId) {
