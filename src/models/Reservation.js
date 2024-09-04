@@ -2,9 +2,22 @@ const db = require('../config/database');
 
 class Reservation {
     static async create(reservationData) {
-        // Implemente a lógica para criar uma nova reserva
+        try {
+            // Insert the reservation data into the database
+            const result = await db.query('INSERT INTO reservations SET ?', reservationData);
+
+            // Return the newly created reservation
+            return {
+                id: result.insertId,
+                ...reservationData
+            };
+        } catch (error) {
+            // Handle any errors that occur during the creation process
+            console.error('Error creating reservation:', error);
+            throw new Error('Failed to create reservation');
+        }
     }
-    // Adicione outros métodos conforme necessário
+    // Add other methods as needed
 }
 
 module.exports = Reservation;
